@@ -1,0 +1,46 @@
+<?php
+// orders/update_status.php
+
+require '../db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $order_id = $_POST['order_id'];
+    $status = $_POST['status'];
+
+    $stmt = $pdo->prepare('UPDATE orders SET status = :status WHERE id = :id');
+    $stmt->execute([
+        'status' => $status,
+        'id' => $order_id
+    ]);
+
+    header('Location: view.php?id=' . $order_id);
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Status do Pedido</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h1>Atualizar Status do Pedido</h1>
+    <form action="update_status.php" method="POST">
+        <label for="order_id">ID do Pedido:</label>
+        <input type="text" id="order_id" name="order_id" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="pending">Pendente</option>
+            <option value="processing">Processando</option>
+            <option value="shipped">Enviado</option>
+            <option value="delivered">Entregue</option>
+        </select>
+
+        <button type="submit">Atualizar Status</button>
+    </form>
+    <a href="list.php">Voltar para a lista de pedidos</a>
+</body>
+</html>

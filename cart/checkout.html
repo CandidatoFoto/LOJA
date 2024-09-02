@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Paraíso Fashion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Estilo para a logo no canto superior esquerdo */
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 110px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+        }
+
+        /* Estilo para o header */
+        header {
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilo para o botão de voltar ao início */
+        .back-to-home {
+            display: block;
+            margin-top: 10px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .back-to-home:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para o main */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px); /* Ajuste a altura conforme necessário */
+            padding: 20px;
+        }
+
+        /* Estilo para o formulário */
+        #checkout-form {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para os fieldset */
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        /* Estilo para os inputs e selects */
+        input[type="text"],
+        select,
+        textarea {
+            display: block;
+            width: calc(100% - 22px);
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Estilo para o botão */
+        button.btn-primary {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #e65c00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button.btn-primary:hover {
+            background-color: #e65c00;
+        }
+
+        /* Estilo para o footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #e65c00;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilo adicional para o telefone da pessoa */
+        #gift-phone-container {
+            display: none; /* Inicialmente escondido */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Adição da logo e do link para voltar ao início -->
+        <a href="../index.html">
+            <img src="../uploads/logo.png" alt="Logo Paraíso Fashion" class="logo">
+        </a>
+        <h1>Checkout</h1>
+        <a href="../index.html" class="back-to-home">Voltar para o Início</a>
+    </header>
+
+    <main>
+        <form id="checkout-form">
+            <fieldset>
+                <legend>Informações de Envio</legend>
+
+                <!-- Endereço padrão do usuário -->
+                <div id="default-address">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required>
+
+                    <label for="rua">Rua:</label>
+                    <input type="text" id="rua" name="rua" required>
+
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" required>
+
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" name="numero" required>
+
+                    <label for="complemento">Complemento:</label>
+                    <input type="text" id="complemento" name="complemento">
+                </div>
+
+                <!-- Opção para enviar de presente -->
+                <label>
+                    <input type="checkbox" id="gift-checkbox">
+                    Enviar como presente
+                </label>
+
+                <!-- Endereço da pessoa para presente -->
+                <div id="gift-address" style="display: none;">
+                    <label for="cep-gift">CEP:</label>
+                    <input type="text" id="cep-gift" name="cep-gift">
+
+                    <label for="rua-gift">Rua:</label>
+                    <input type="text" id="rua-gift" name="rua-gift">
+
+                    <label for="cidade-gift">Cidade:</label>
+                    <input type="text" id="cidade-gift" name="cidade-gift">
+
+                    <label for="bairro-gift">Bairro:</label>
+                    <input type="text" id="bairro-gift" name="bairro-gift">
+
+                    <label for="numero-gift">Número:</label>
+                    <input type="text" id="numero-gift" name="numero-gift">
+
+                    <label for="complemento-gift">Complemento:</label>
+                    <input type="text" id="complemento-gift" name="complemento-gift">
+
+                    <label for="gift-message">Frase para o pedido:</label>
+                    <textarea id="gift-message" name="gift-message"></textarea>
+
+                    <label for="gift-name">Nome da pessoa:</label>
+                    <input type="text" id="gift-name" name="gift-name">
+
+                    <!-- Telefone da pessoa para presente -->
+                    <div id="gift-phone-container">
+                        <label for="gift-phone">Telefone da pessoa:</label>
+                        <input type="text" id="gift-phone" name="gift-phone">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Informação de contato -->
+            <fieldset>
+                <legend>Informações de Contato</legend>
+
+                <label for="user-phone">Seu telefone:</label>
+                <input type="text" id="user-phone" name="user-phone">
+            </fieldset>
+
+            <!-- Formas de pagamento -->
+            <fieldset>
+                <legend>Formas de Pagamento</legend>
+
+                <label for="payment-method">Escolha a forma de pagamento:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="debito">Cartão de Débito</option>
+                    <option value="credito">Cartão de Crédito</option>
+                    <option value="boleto">Boleto</option>
+                    <option value="pix">PIX</option>
+                </select>
+
+                <!-- Campos para cartão de crédito/débito -->
+                <div id="card-details" style="display: none;">
+                    <label for="card-number">Número do Cartão:</label>
+                    <input type="text" id="card-number" name="card-number">
+
+                    <label for="expiry">Data de Validade:</label>
+                    <input type="text" id="expiry" name="expiry">
+
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv">
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-primary">Confirmar Compra</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2024 Paraíso Fashion. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script src="js/scripts.js"></script>
+    <script>
+        // Scripts para manipulação de formulários
+        document.getElementById('gift-checkbox').addEventListener('change', function() {
+            var giftAddress = document.getElementById('gift-address');
+            var giftPhoneContainer = document.getElementById('gift-phone-container');
+            if (this.checked) {
+                giftAddress.style.display = 'block';
+                giftPhoneContainer.style.display = 'block'; // Exibe o telefone
+                document.getElementById('default-address').style.display = 'none';
+            } else {
+                giftAddress.style.display = 'none';
+                giftPhoneContainer.style.display = 'none'; // Esconde o telefone
+                document.getElementById('default-address').style.display = 'block';
+            }
+        });
+
+        document.getElementById('payment-method').addEventListener('change', function() {
+            var cardDetails = document.getElementById('card-details');
+            if (this.value === 'debito' || this.value === 'credito') {
+                cardDetails.style.display = 'block';
+            } else {
+                cardDetails.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

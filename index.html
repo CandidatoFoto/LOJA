@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Paraíso Fashion</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Caminho para o CSS -->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="uploads/logo.png" alt="Paraíso Fashion Logo"> <!-- Certifique-se de que a logo está no caminho correto -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li class="dropdown">
+                        <a href="#">Produtos</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="products/masculino.html">Masculino</a></li>
+                            <li><a href="products/feminino.html">Feminino</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cart/view_cart.html">Carrinho</a></li>
+                    <li><a href="auth/login.html">Login</a></li>
+                    <li><a href="auth/register.html">Registro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner -->
+        <section class="banner-slider">
+            <div class="banner-slide">
+                <img src="uploads/banner1.png" alt="Banner Promocional 1">
+            </div>
+            <div class="banner-slide">
+                <img src="uploads/banner2.png" alt="Banner Promocional 2">
+            </div>
+            <div class="banner-slide">
+                <img src="uploads/banner3.png" alt="Banner Promocional 3">
+            </div>
+        </section>
+
+        <!-- Novidades da Coleção -->
+        <section id="product-list" class="container">
+            <h2>Novidades da Semana!</h2>
+            <div class="novidades-grid">
+                <!-- Exemplo de produto com desconto -->
+                <div class="novidade-item desconto">
+                    <img src="uploads/produto-1.jpg" alt="Produto 1">
+                    <div class="product-info">
+                        <p class="product-name">Produto 1</p>
+                        <p class="product-price">R$ 99,99</p>
+                        <button class="buy-button">Comprar</button>
+                        <div class="discount-badge">Desconto</div>
+                    </div>
+                </div>
+                <!-- Exemplo de produto sem desconto -->
+                <div class="novidade-item">
+                    <img src="uploads/produto-2.jpg" alt="Produto 2">
+                    <div class="product-info">
+                        <p class="product-name">Produto 2</p>
+                        <p class="product-price">R$ 149,99</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+                <div class="novidade-item">
+                    <img src="uploads/produto-3.jpg" alt="Produto 3">
+                    <div class="product-info">
+                        <p class="product-name">Produto 3</p>
+                        <p class="product-price">R$ 79,99</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+                <div class="novidade-item">
+                    <img src="uploads/produto-4.jpg" alt="Produto 4">
+                    <div class="product-info">
+                        <p class="product-name">Produto 4</p>
+                        <p class="product-price">R$ 129,99</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+                <!-- Adicione mais itens conforme necessário -->
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2024 Paraíso Fashion. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

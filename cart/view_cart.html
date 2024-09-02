@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Caminho para o CSS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleciona todos os inputs de quantidade
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            
+            // Atualiza o subtotal e o total do carrinho
+            function updateCart() {
+                let subtotal = 0;
+                const shippingCost = 20.00; // Custo de frete fixo, pode ser alterado conforme necessário
+
+                // Itera sobre cada linha da tabela
+                document.querySelectorAll('.cart-table tbody tr').forEach(row => {
+                    const price = parseFloat(row.querySelector('td:nth-child(2)').innerText.replace('R$ ', '').replace(',', '.'));
+                    const quantity = parseInt(row.querySelector('.quantity-input').value);
+                    const total = price * quantity;
+                    row.querySelector('td:nth-child(4)').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+                    subtotal += total;
+                });
+
+                // Atualiza o subtotal e o total na parte inferior do carrinho
+                document.querySelector('.cart-summary p:nth-child(1)').innerText = `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                document.querySelector('.cart-summary p:nth-child(2)').innerText = `Frete: R$ ${shippingCost.toFixed(2).replace('.', ',')}`;
+                document.querySelector('.cart-summary p:nth-child(3)').innerHTML = `<strong>Total: R$ ${(subtotal + shippingCost).toFixed(2).replace('.', ',')}</strong>`;
+            }
+
+            // Adiciona event listeners para os inputs de quantidade
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', updateCart);
+            });
+
+            // Inicializa o carrinho com os valores corretos
+            updateCart();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../uploads/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li class="dropdown">
+                    <a href="#">Produtos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../products/masculino.html">Masculino</a></li>
+                        <li><a href="../products/feminino.html">Feminino</a></li>
+                    </ul>
+                </li>
+                <li><a href="../cart/view_cart.html">Carrinho</a></li>
+                <li><a href="../cart/checkout.html">Finalizar Compra</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Carrinho de Compras</h1>
+        <div class="cart-container">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de item -->
+                    <tr>
+                        <td>
+                            <div class="product-info">
+                                <img src="../uploads/produto-1.jpg" alt="Produto 1">
+                                <p>Produto 1</p>
+                            </div>
+                        </td>
+                        <td>R$ 100,00</td>
+                        <td>
+                            <input type="number" value="1" min="1" class="quantity-input">
+                        </td>
+                        <td>R$ 100,00</td>
+                        <td><button class="remove-button">Remover</button></td>
+                    </tr>
+                    <!-- Adicione mais itens aqui -->
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <h2>Resumo do Pedido</h2>
+                <p>Subtotal: R$ 100,00</p>
+                <p>Frete: R$ 20,00</p>
+                <p><strong>Total: R$ 120,00</strong></p>
+                <a href="checkout.html" class="checkout-button">Finalizar Compra</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2024 Paraíso Fashion. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

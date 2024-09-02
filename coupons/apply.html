@@ -1,0 +1,23 @@
+<?php
+// coupons/apply.php
+
+session_start();
+require '../db.php';
+
+$coupon_code = $_POST['coupon_code'];
+$cart = $_SESSION['cart'] ?? [];
+
+$coupon = $pdo->prepare('SELECT * FROM coupons WHERE code = :code AND expiration_date >= CURDATE()');
+$coupon->execute(['code' => $coupon_code]);
+$coupon = $coupon->fetch();
+
+if ($coupon) {
+    $_SESSION['discount'] = $coupon['discount'];
+    header('Location: checkout.php');
+    exit();
+} else {
+    $_SESSION['error'] = 'Cupom inválido ou expirado.';
+    header('Location: view_cart.php');
+    exit();
+}
+?>

@@ -1,0 +1,38 @@
+<?php
+// coupons/list.php
+
+require '../db.php';
+
+$coupons = $pdo->query('SELECT * FROM coupons')->fetchAll();
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cupons de Desconto</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h1>Listagem de Cupons</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Desconto</th>
+                <th>Data de Expiração</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($coupons as $coupon): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($coupon['code']); ?></td>
+                    <td><?php echo htmlspecialchars($coupon['discount']); ?>%</td>
+                    <td><?php echo htmlspecialchars($coupon['expiration_date']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <a href="../index.php">Voltar para a página inicial</a>
+</body>
+</html>

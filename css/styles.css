@@ -1,0 +1,556 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #ff6f00;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+nav {
+    margin-left: 120px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #000;
+}
+
+nav ul li .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+nav ul li:hover .dropdown-menu,
+nav ul li:focus-within .dropdown-menu {
+    display: block;
+}
+
+nav ul li .dropdown-menu li {
+    margin: 0;
+}
+
+nav ul li .dropdown-menu a {
+    padding: 10px;
+    color: #333;
+}
+
+nav ul li .dropdown-menu a:hover,
+nav ul li .dropdown-menu a:focus {
+    background-color: #f0f0f0;
+}
+
+/* Slider de Banner */
+.banner-slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+    margin: 20px auto;
+    z-index: 1;
+}
+
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out; /* Ajusta a transição para 0.5 segundos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffebcd;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    opacity: 0;
+}
+
+.banner-slide img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-slide:nth-child(1) {
+    animation: slideIn 30s infinite;
+}
+
+.banner-slide:nth-child(2) {
+    animation: slideIn 30s infinite 10s;
+}
+
+.banner-slide:nth-child(3) {
+    animation: slideIn 30s infinite 20s;
+}
+
+@keyframes slideIn {
+    0%, 100% { opacity: 0; } /* Começa e termina com opacity 0 */
+    5%, 95% { opacity: 1; } /* Mostra o slide por um tempo maior */
+}
+
+/* Seção Novidades da Coleção */
+#product-list {
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+#product-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.novidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.novidade-item {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.novidade-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-name {
+    font-size: 20px;
+    color: #333;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.buy-button {
+    background-color: #ff6f00;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #e65c00;
+}
+
+.desconto .discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.novidade-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Página de Registro */
+#registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#registration-form label {
+    margin: 15px 0 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+#registration-form input[type="text"],
+#registration-form input[type="email"],
+#registration-form input[type="password"] {
+    display: block;
+    margin: 0 0 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+#registration-form button {
+    background-color: #ff6f00;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#registration-form button:hover {
+    background-color: #e65c00;
+}
+
+/* Rodapé */
+footer {
+    background-color: #ff6f00;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Estilos do Carrinho de Compras */
+main {
+    padding: 20px;
+    flex: 1; /* Permite que o main ocupe o espaço disponível */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto; /* Centraliza o container */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.cart-table th {
+    background-color: #f4f4f4;
+}
+
+.cart-table td img {
+    max-width: 100px;
+    height: auto;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+}
+
+.remove-button {
+    background-color: #ff6f00;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: #e65c00;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cart-summary h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.cart-summary p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.checkout-button {
+    background-color: #ff6f00;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.checkout-button:hover {
+    background-color: #e65c00;
+}
+
+/* Media Queries para diferentes tamanhos de tela */
+
+/* Tablets */
+@media (max-width: 768px) {
+    nav {
+        margin: 0 auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .cart-table {
+        font-size: 14px;
+    }
+
+    .remove-button,
+    .checkout-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .cart-summary p {
+        font-size: 16px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .cart-table {
+        font-size: 12px;
+    }
+
+    .remove-button,
+    .checkout-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .cart-summary p {
+        font-size: 14px;
+    }
+}
+
+/* Container do formulário */
+#register-form-container {
+    background-color: #ffffff; /* Cor de fundo do formulário */
+    border: 2px solid #ddd; /* Borda do formulário */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 20px; /* Espaçamento interno */
+    max-width: 600px; /* Largura máxima */
+    width: 100%; /* Largura total disponível */
+    margin: 20px auto; /* Margem automática para centralizar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao redor do formulário */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo do formulário */
+#register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo dos grupos de formulário */
+.form-group {
+    margin-bottom: 15px;
+    width: 100%; /* Largura total do formulário */
+    max-width: 500px; /* Largura máxima dos campos de formulário */
+    text-align: left; /* Alinha o texto à esquerda dentro do grupo */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #ff6f00;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e65c00;
+}
+
+/* Estilo para mensagens de erro */
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+}
+/* Estilos para a página de produtos */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    margin: 10px;
+}
+
+.product-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.product-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+.product-item button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.product-item button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para centralizar o título */
+main h1 {
+    text-align: center; /* Centraliza o texto do título */
+    font-size: 36px; /* Tamanho do texto do título */
+    color: #333; /* Cor do texto do título */
+    margin-top: 20px; /* Espaçamento acima do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}

@@ -1,0 +1,49 @@
+<?php
+// orders/view.php
+
+require '../db.php';
+
+$order_id = $_GET['id'];
+$order = $pdo->query('SELECT * FROM orders WHERE id = ' . $order_id)->fetch();
+$order_items = $pdo->query('SELECT * FROM order_items WHERE order_id = ' . $order_id)->fetchAll();
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Pedido</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h1>Detalhes do Pedido</h1>
+    <p>ID do Pedido: <?php echo htmlspecialchars($order['id']); ?></p>
+    <p>Usuário: <?php echo htmlspecialchars($order['user_id']); ?></p>
+    <p>Data: <?php echo htmlspecialchars($order['created_at']); ?></p>
+    <p>Total: R$ <?php echo number_format($order['total_amount'], 2, ',', '.'); ?></p>
+
+    <h2>Itens do Pedido</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($order_items as $item): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($item['product_id']); ?></td>
+                    <td><?php echo $item['quantity']; ?></td>
+                    <td>R$ <?php echo number_format($item['price'], 2, ',', '.'); ?></td>
+                    <td>R$ <?php echo number_format($item['quantity'] * $item['price'], 2, ',', '.'); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <a href="list.php">Voltar para a lista de pedidos</a>
+</body>
+</html>

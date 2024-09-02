@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Caminho para o CSS atualizado -->
+    <style>
+        /* Centraliza o título */
+        h1 {
+            text-align: center; /* Centraliza o texto */
+            font-size: 36px; /* Tamanho do texto do título */
+            color: #333; /* Cor do texto do título */
+            margin-top: 20px; /* Espaçamento acima do título */
+            margin-bottom: 20px; /* Espaçamento abaixo do título */
+        }
+
+        /* Estiliza o container para centralizar o conteúdo */
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        /* Estiliza o botão de recuperação de senha */
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .forgot-password a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estiliza o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .modal-content button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .modal-content button:hover {
+            background-color: #ff6f00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../uploads/logo.png" alt="Paraíso Fashion Logo"> <!-- Caminho para o logo atualizado -->
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="register.html">Registro</a></li>
+                <!-- Adicione mais links conforme necessário -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Login</h1>
+            <form id="login-form" action="login-handler.php" method="POST">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Entrar</button>
+
+                <div class="forgot-password">
+                    <a href="#" id="forgot-password-link">Esqueceu a senha?</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Paraíso Fashion. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal para recuperação de senha -->
+    <div id="forgot-password-modal" class="modal">
+        <div class="modal-content">
+            <h2>Recuperação de Senha</h2>
+            <p>Insira seu e-mail para receber o link de recuperação de senha.</p>
+            <form id="forgot-password-form">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Enviar Link</button>
+            </form>
+            <button id="close-modal">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar o modal de recuperação de senha
+        document.getElementById('forgot-password-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('forgot-password-modal').style.display = 'flex';
+        });
+
+        // Fechar o modal
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('forgot-password-modal').style.display = 'none';
+        });
+
+        // Enviar o e-mail para recuperação de senha
+        document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+
+            // Simulação de envio de e-mail (substitua com lógica real de backend)
+            axios.post('/send-password-reset-link', { email: email })
+                .then(function(response) {
+                    alert('Link de recuperação de senha enviado para o e-mail informado.');
+                    document.getElementById('forgot-password-modal').style.display = 'none';
+                })
+                .catch(function(error) {
+                    console.error('Erro ao enviar o link de recuperação de senha:', error);
+                    alert('Houve um erro ao enviar o link de recuperação de senha. Tente novamente.');
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        function logout() {
+            // Envia uma solicitação para a página PHP que destrói a sessão
+            fetch('logout.php')
+                .then(response => {
+                    if (response.ok) {
+                        // Redireciona para a página inicial após a sessão ser destruída
+                        window.location.href = '../index.php';
+                    } else {
+                        // Exibe uma mensagem de erro se a solicitação falhar
+                        alert('Não foi possível encerrar a sessão. Tente novamente.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao tentar encerrar a sessão.');
+                });
+        }
+    </script>
+</head>
+<body onload="logout()">
+    <h1>Encerrando a sessão...</h1>
+</body>
+</html>

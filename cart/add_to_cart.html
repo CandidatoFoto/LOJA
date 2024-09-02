@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar ao Carrinho - Paraíso Fashion</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Adicionar ao Carrinho</h1>
+    </header>
+
+    <main>
+        <form action="add_to_cart.html" method="POST">
+            <label for="product_id">ID do Produto:</label>
+            <input type="text" id="product_id" name="product_id" required>
+
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" name="quantity" required>
+
+            <button type="submit">Adicionar ao Carrinho</button>
+        </form>
+        <a href="view_cart.html">Ver Carrinho</a>
+    </main>
+</body>
+</html>
